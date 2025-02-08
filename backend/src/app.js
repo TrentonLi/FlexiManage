@@ -26,7 +26,7 @@ const db = require('./db');
 
 app.get('/api/users', async (req, res) => {
     try {
-        const [rows] = await db.query('SELECT * FROM users');
+        const [rows] = await db.query('SELECT * FROM example_table');
         res.json(rows);
     } catch (err) {
         res.status(500).json({ error: err.message });
