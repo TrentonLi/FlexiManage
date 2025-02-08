@@ -1,9 +1,19 @@
 <script setup lang="ts">
+import {Header} from "./components/Header";
+import {useRoute} from "vue-router";
+const route = useRoute()
+console.log('route',route)
 </script>
 
 <template>
+  <template v-if="route.path == '/login' || route.path == '/signIn'">
+    <RouterView />
+  </template>
+  <template v-else>
     <n-layout>
-      <n-layout-header>我是Header</n-layout-header>
+      <n-layout-header>
+        <Header :title="'导航栏'" />
+      </n-layout-header>
       <n-layout has-sider>
         <n-layout-sider content-style="padding: 24px;">
           我是菜单
@@ -15,6 +25,7 @@
       </n-layout>
       <n-layout-footer>底部</n-layout-footer>
     </n-layout>
+  </template>
 </template>
 
 <style scoped>

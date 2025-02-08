@@ -1,0 +1,14 @@
+.layout_card{
+    margin: 10% auto;
+    width: 30%;
+    height: 500px;
+    background: #ff67;
+    text-align: center;
+}
+.layout_tit{
+    font-size: 30px;
+    font-weight: bold;
+}
+.layout_des{
+
+}

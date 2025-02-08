@@ -1,3 +1,9 @@
+/**
+ * @Author: TrentonLi
+ * @Date: 2025/2/07
+ * @LastEditors: TrentonLi
+ * @Description: 路由配置
+ */
 import {defineStore} from "pinia";
 interface userInfo {
     name:string,

@@ -5,7 +5,23 @@ import type {RouteRecordRaw} from "vue-router"
 const routes: Array<RouteRecordRaw> = [
     {
         path: "/", // 默认路由 home页面
-        component: () => import("../components/test.vue"),
+        redirect:"/login",
+        component: () => import("../SignIn/login.vue"),
+    },
+    {
+        path: "/home", // 默认路由 home页面
+        name:'home',
+        component: () => import("../components/Test.vue"),
+    },
+    {
+        path: "/login", // 默认路由 home页面
+        name:'login',
+        component: () => import("../SignIn/login.vue"),
+    },
+    {
+        path: "/signIn", // 默认路由 home页面
+        name:'signIn',
+        component: () => import("../SignIn/signIn.vue"),
     },
 
 ];
