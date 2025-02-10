@@ -7,22 +7,80 @@
 <script setup lang="ts">
 import {useRouter} from "vue-router";
 import Layout from "./Layout.vue";
+import {ref} from "vue";
+import {type FormInst, useMessage} from "naive-ui";
+import {useUserStore} from "../stores/userStore";
 
 const router = useRouter()
-const login = () =>{
-  console.log('登录')
-  router.push('/home')
+const useStore = useUserStore()
+const message = useMessage()
+
+const desText = `没有账户吗? <span style="font-weight: bold;color: #1a1a1a">注册</span>`
+
+const formRef = ref<FormInst | null>(null)
+
+interface loginVal {
+  userName: String
+  passWord: String
+}
+
+const formValue = ref<loginVal>({
+  userName: '',
+  passWord: ''
+})
+const rules = {
+  userName: {required: true, message: '请输入用户名', trigger: 'blur'},
+  passWord: {required: true, message: '请输入用户名', trigger: 'blur'}
+}
+const Login = () => {
+  formRef.value?.validate((error) => {
+    if (!error) {
+      if (formValue.value.userName === 'admin' && formValue.value.passWord === '123456') {
+        message.success('登录成功')
+        useStore.setInfo({
+          name: formValue.value.userName,
+          token: 'adminToken'
+        })
+        router.push('/home')
+      } else {
+        message.error('账号密码错误')
+      }
+    } else {
+      console.log('error')
+    }
+  })
+}
+const toSignUp = (e: Event) => {
+  if ((e.target as HTMLElement)?.tagName === 'SPAN') {
+    router.push('/signUp');
+  }
 }
 </script>
 
 <template>
-  <Layout @btnHandle="login" :title="'标题'" :desc="'我是登录'" :btnText="'登录'">
-    <div>
-      登录/注册表单
+  <Layout @btnHandle="Login" :title="'登录'" :desc="desText" :btnText="'登录'" @descClick="toSignUp">
+    <div class="slot_form">
+      <NForm
+          ref="formRef"
+          :label-width="80"
+          :model="formValue"
+          :rules="rules"
+          :size="'large'">
+        <NFormItem label="账号" path="userName">
+          <NInput placeholder="请输入用户名(admin)" v-model:value="formValue.userName"/>
+        </NFormItem>
+        <NFormItem label="密码" path="passWord">
+          <NInput
+              type="password"
+              show-password-on="mousedown"
+              placeholder="请输入密码(123456)" v-model:value="formValue.passWord"/>
+        </NFormItem>
+      </NForm>
+      <div class="forgetPass pointer">忘记密码?</div>
     </div>
   </Layout>
 </template>
 
 <style scoped>
-
+@import "index.css";
 </style>

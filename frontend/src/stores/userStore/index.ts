@@ -6,17 +6,17 @@
  */
 import {defineStore} from "pinia";
 interface userInfo {
-    name:string,
-    count:number,
-    token:string
+    name:String,
+    count?:Number,
+    token:String
 }
 export const useUserStore = defineStore(
     'user',
     {
         state: ():userInfo => {
             return {
-                name:'admin',
-                token:'adminToken',
+                name:'',
+                token:'',
                 count: 0
             }
         },
@@ -26,8 +26,12 @@ export const useUserStore = defineStore(
             }
         },
         actions: {
-            setCount(count: number) {
+            setCount(count: Number) {
                 this.count = count;
+            },
+            setInfo(info:userInfo){
+                this.name = info.name;
+                this.token = info.token;
             }
         }
     }

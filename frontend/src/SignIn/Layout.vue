@@ -12,8 +12,12 @@ const {title, desc, btnText} = defineProps<{
 }>()
 const emits = defineEmits<{
   btnHandle: void
+  descClick:void
 }>()
 const handle = () => emits('btnHandle')
+const descClick = (e:Event) =>{
+  emits('descClick',e)
+}
 </script>
 
 <template>
@@ -21,7 +25,7 @@ const handle = () => emits('btnHandle')
     <!--  标题-->
     <div class="layout_tit">{{ title }}</div>
     <!--  简介-->
-    <p class="layout_des">{{ desc }}</p>
+    <p v-html="desc" @click="descClick($event)" class="layout_des pointer"></p>
     <!--  插槽-->
     <slot></slot>
     <!--  确认按钮-->

@@ -13,6 +13,11 @@ import {
     NLayoutHeader,
     NLayoutFooter,
     NLayoutContent,
+    NForm,
+    NFormItem,
+    NInput,
+    useMessage,
+    NMessageProvider
 } from "naive-ui";
 export const naiveUI = create({
     components:[
@@ -22,6 +27,11 @@ export const naiveUI = create({
         NLayoutSider,
         NLayoutHeader,
         NLayoutFooter,
-        NLayoutContent
+        NLayoutContent,
+        NForm,
+        NFormItem,
+        NInput,
+        useMessage,
+        NMessageProvider
     ]
 })
