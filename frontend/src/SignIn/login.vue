@@ -55,6 +55,9 @@ const toSignUp = (e: Event) => {
     router.push('/signUp');
   }
 }
+const ForgetPass = () =>{
+  router.push('/forgotPass')
+}
 </script>
 
 <template>
@@ -73,10 +76,12 @@ const toSignUp = (e: Event) => {
           <NInput
               type="password"
               show-password-on="mousedown"
-              placeholder="请输入密码(123456)" v-model:value="formValue.passWord"/>
+              placeholder="请输入密码(123456)" v-model:value="formValue.passWord"
+              @keyup.enter="Login"
+          />
         </NFormItem>
       </NForm>
-      <div class="forgetPass pointer">忘记密码?</div>
+      <div class="forgetPass pointer" @click="ForgetPass">忘记密码?</div>
     </div>
   </Layout>
 </template>

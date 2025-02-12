@@ -17,7 +17,8 @@ import {
     NFormItem,
     NInput,
     useMessage,
-    NMessageProvider
+    NMessageProvider,
+    NMenu
 } from "naive-ui";
 export const naiveUI = create({
     components:[
@@ -32,6 +33,7 @@ export const naiveUI = create({
         NFormItem,
         NInput,
         useMessage,
-        NMessageProvider
+        NMessageProvider,
+        NMenu
     ]
 })

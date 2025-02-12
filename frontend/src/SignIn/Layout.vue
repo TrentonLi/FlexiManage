@@ -5,19 +5,21 @@
  * @Description: 登录或注册Layout
  -->
 <script setup lang="ts">
+import Back from "../components/Back.tsx";
+import {useRoute} from "vue-router";
+
+const route = useRoute()
 const {title, desc, btnText} = defineProps<{
   title: String,
   desc: String,
   btnText: String,
 }>()
 const emits = defineEmits<{
-  btnHandle: void
-  descClick:void
+  (e: btnHandle): void
+  (e: descClick, v: Event): void
 }>()
 const handle = () => emits('btnHandle')
-const descClick = (e:Event) =>{
-  emits('descClick',e)
-}
+const descClick = (e: Event) => emits('descClick', e)
 </script>
 
 <template>
@@ -38,6 +40,10 @@ const descClick = (e:Event) =>{
     >
       {{ btnText }}
     </NButton>
+    <!--返回按钮-->
+    <div v-if="route.path === '/signUp'" class="backBox">
+      <Back :btnText="'< Back to login'"/>
+    </div>
   </div>
 </template>
 

@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type {RouteRecordRaw} from "vue-router"
 import Login from "../SignIn/login.vue";
+import Test from "../components/Test.vue";
+import SignIn from "../SignIn/signIn.vue";
+import ForgotPass from "../SignIn/ForgotPass.vue";
 
 // 1. 配置路由
 export const routes: Array<RouteRecordRaw> = [
@@ -11,7 +14,7 @@ export const routes: Array<RouteRecordRaw> = [
     {
         path: "/home", // 默认路由 home页面
         name:'home',
-        component: () => import("../components/Test.vue"),
+        component: Test,
     },
     {
         path: "/login", // 默认路由 home页面
@@ -21,7 +24,12 @@ export const routes: Array<RouteRecordRaw> = [
     {
         path: "/signUp", // 默认路由 home页面
         name:'signUp',
-        component: () => import("../SignIn/signIn.vue"),
+        component: SignIn,
+    },
+{
+        path: "/forgotPass", // 默认路由 home页面
+        name:'forgotPass',
+        component: ForgotPass,
     },
 
 ];

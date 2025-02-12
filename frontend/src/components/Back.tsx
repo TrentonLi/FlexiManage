@@ -10,7 +10,13 @@ import {NButton} from "naive-ui";
 
 export default defineComponent({
     name: 'Back',
-    setup() {
+    props:{
+      btnText:{
+        type: String,
+        default: 'Back'
+      }
+    },
+    setup(props) {
         const router = useRouter();
 
         const goBack = () => {
@@ -23,7 +29,7 @@ export default defineComponent({
 
         return () => (
             <NButton strong secondary onClick={goBack}>
-                Back
+                {props.btnText}
             </NButton>
         );
     },
