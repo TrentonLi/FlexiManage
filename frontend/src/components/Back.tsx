@@ -14,6 +14,10 @@ export default defineComponent({
       btnText:{
         type: String,
         default: 'Back'
+      },
+    type: {
+        type: String,
+        default: undefined
       }
     },
     setup(props) {
@@ -28,7 +32,7 @@ export default defineComponent({
         };
 
         return () => (
-            <NButton strong secondary onClick={goBack}>
+            <NButton strong secondary onClick={goBack} type={props.type}>
                 {props.btnText}
             </NButton>
         );

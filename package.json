@@ -8,11 +8,12 @@
 		"postinstall": "cd backend && npm install && cd ../frontend && npm install"
 	},
 	"devDependencies": {
-		"concurrently": "^7.6.0"
+		"concurrently": "^7.6.0",
+		"eslint": "^9.20.1"
 	},
 	"private": true,
-  "workspaces": [
-    "backend",
-    "frontend"
-  ]
+	"workspaces": [
+		"backend",
+		"frontend"
+	]
 }

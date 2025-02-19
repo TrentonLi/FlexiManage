@@ -1,7 +1,7 @@
 <!--
  * @Author: TrentonLi
  * @Date: 2025/2/7
- * @LastEditors: TrentonLi
+ * @LastEditors: 赵恩来
  * @Description: 登录页面
  -->
 <script setup lang="ts">
@@ -15,7 +15,7 @@ const router = useRouter()
 const useStore = useUserStore()
 const message = useMessage()
 
-const desText = `没有账户吗? <span style="font-weight: bold;color: #1a1a1a">注册</span>`
+const desText = `已有账户 <span style="font-weight: bold;color: #1a1a1a">立即登录</span>`
 
 const formRef = ref<FormInst | null>(null)
 
@@ -52,7 +52,7 @@ const Login = () => {
 }
 const toSignUp = (e: Event) => {
   if ((e.target as HTMLElement)?.tagName === 'SPAN') {
-    router.push('/signUp');
+    router.back();
   }
 }
 const ForgetPass = () =>{
