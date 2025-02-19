@@ -7,7 +7,8 @@
 import {defineComponent} from "vue";
 import {useRouter} from "vue-router";
 import {NButton} from "naive-ui";
-
+// 定义 Naive UI 支持的按钮类型
+type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info';
 export default defineComponent({
     name: 'Back',
     props:{
@@ -15,10 +16,10 @@ export default defineComponent({
         type: String,
         default: 'Back'
       },
-    type: {
-        type: String,
-        default: undefined
-      }
+        type:{
+            type: String as () => ButtonType,
+            default: 'info'
+        }
     },
     setup(props) {
         const router = useRouter();
