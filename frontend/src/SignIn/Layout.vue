@@ -5,10 +5,7 @@
  * @Description: 登录或注册Layout
  -->
 <script setup lang="ts">
-	import Back from "../components/Back.tsx";
-	import { useRoute } from "vue-router";
 
-	const route = useRoute();
 	const { title, desc, btnText } = defineProps<{
 		title: String;
 		desc: String;
