@@ -1,0 +1,13 @@
+.header{
+  width: 100vw;
+  height: 80px;
+}
+.Viewport{
+  display: flex;
+  .leftMenu{
+    width: 240px;
+  }
+  .rightContent{
+    width: calc(100vw - 240px);;
+  }
+}
