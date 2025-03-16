@@ -17,17 +17,17 @@ export const routes: Array<RouteRecordRaw> = [
         component: Test,
     },
     {
-        path: "/login", // 默认路由 home页面
+        path: "/login",
         name:'login',
         component: Login,
     },
     {
-        path: "/signUp", // 默认路由 home页面
+        path: "/signUp",
         name:'signUp',
         component: SignIn,
     },
 {
-        path: "/forgotPass", // 默认路由 home页面
+        path: "/forgotPass",
         name:'forgotPass',
         component: ForgotPass,
     },

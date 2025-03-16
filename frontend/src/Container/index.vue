@@ -1,42 +1,9 @@
 <script setup lang="ts">
 import {Header} from "../components/Header.tsx";
 import Menu from "./menu.vue"
-import type {MenuOption} from "naive-ui";
+import {menuList} from "./menuList.ts";
 
-const menuOptions: MenuOption[] = [
-  {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-    //icon: renderIcon(BookIcon),
-    children: [
-      {
-        label: '饮品',
-        key: 'beverage',
-        //icon: renderIcon(WineIcon),
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky'
-          }
-        ]
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich'
-          }
-        ]
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes'
-      }
-    ]
-  }
-]
+
 </script>
 
 <template>
@@ -45,7 +12,7 @@ const menuOptions: MenuOption[] = [
   <!--视图窗-->
   <div class="Viewport">
     <div class="leftMenu">
-      <Menu :menu-options="menuOptions"/>
+      <Menu :menu-options="menuList"/>
     </div>
     <div class="rightContent">
       <RouterView />

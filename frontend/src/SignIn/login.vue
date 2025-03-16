@@ -10,6 +10,7 @@ import Layout from "./Layout.vue";
 import {ref} from "vue";
 import {type FormInst, useMessage} from "naive-ui";
 import {useUserStore} from "../stores/userStore";
+import {useActiveRouteStore} from "../stores/activeRoute.ts";
 
 const router = useRouter()
 const useStore = useUserStore()
@@ -32,6 +33,7 @@ const rules = {
   userName: {required: true, message: '请输入用户名', trigger: 'blur'},
   passWord: {required: true, message: '请输入用户名', trigger: 'blur'}
 }
+const activeRouteStore = useActiveRouteStore();
 const Login = () => {
   formRef.value?.validate((error) => {
     if (!error) {
@@ -42,6 +44,7 @@ const Login = () => {
           token: 'adminToken'
         })
         router.push('/home')
+        activeRouteStore.setActiveRoute('home')
       } else {
         message.error('账号密码错误')
       }
