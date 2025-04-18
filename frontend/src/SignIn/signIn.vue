@@ -9,10 +9,10 @@ import {useRouter} from "vue-router";
 import Layout from "./Layout.vue";
 import {ref} from "vue";
 import {type FormInst, useMessage} from "naive-ui";
-import {useUserStore} from "../stores/userStore";
+import {useAuthStore} from "../stores/userStore";
 
 const router = useRouter()
-const useStore = useUserStore()
+const useStore = useAuthStore()
 const message = useMessage()
 
 const desText = `已有账户 <span style="font-weight: bold;color: #1a1a1a">立即登录</span>`
@@ -37,9 +37,10 @@ const Login = () => {
     if (!error) {
       if (formValue.value.userName === 'admin' && formValue.value.passWord === '123456') {
         message.success('登录成功')
-        useStore.setInfo({
-          name: formValue.value.userName,
-          token: 'adminToken'
+        useStore.login({
+          token: 'xxxxxx',
+          username: 'Trenton',
+          userId: '12345'
         })
         router.push('/home')
       } else {

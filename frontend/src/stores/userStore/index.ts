@@ -4,35 +4,51 @@
  * @LastEditors: TrentonLi
  * @Description: 路由配置
  */
-import {defineStore} from "pinia";
-interface userInfo {
-    name:String,
-    count?:Number,
-    token:String
+import { defineStore } from 'pinia'
+
+interface AuthState {
+    token: string
+    username: string
+    userId: string
 }
-export const useUserStore = defineStore(
-    'user',
-    {
-        state: ():userInfo => {
-            return {
-                name:'',
-                token:'',
-                count: 0
-            }
+
+export const useAuthStore = defineStore('auth', {
+    state: (): AuthState => ({
+        token: '',
+        username: '',
+        userId: ''
+    }),
+
+    getters: {
+        isLoggedIn: (state) => !!state.token,
+        getToken: (state) => state.token,
+        getUserInfo: (state) => ({
+            username: state.username,
+            userId: state.userId
+        })
+    },
+
+    actions: {
+        login(payload: { token: string; username: string; userId: string }) {
+            this.token = payload.token
+            this.username = payload.username
+            this.userId = payload.userId
         },
-        getters: {
-            getUserStore(state) {
-                return state
-            }
+
+        logout() {
+            this.token = ''
+            this.username = ''
+            this.userId = ''
         },
-        actions: {
-            setCount(count: Number) {
-                this.count = count;
-            },
-            setInfo(info:userInfo){
-                this.name = info.name;
-                this.token = info.token;
-            }
+
+        updateUserInfo(payload: Partial<Omit<AuthState, 'token'>>) {
+            if (payload.username) this.username = payload.username
+            if (payload.userId) this.userId = payload.userId
         }
+    },
+
+    persist: {
+        key: 'auth-store',
+        storage: localStorage
     }
-)
+})

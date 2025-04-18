@@ -1,13 +1,14 @@
 /*
  * @Author: 赵恩来
  * @Date: 2025-02-07 16:51:57
- * @LastEditors: 赵恩来
+ * @LastEditors: lwt
  * @LastEditTime: 2025-02-19 09:58:59
  * @Description:
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import {nodePolyfills} from "vite-plugin-node-polyfills";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -21,7 +22,7 @@ export default defineConfig({
 			},
 		},
 	},
-	plugins: [vue(), vueJsx()],
+	plugins: [vue(), vueJsx(),nodePolyfills()],
 	resolve: {
 		alias: {
 			"@": "./src",

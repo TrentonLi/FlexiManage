@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import {useUserStore} from "../stores/userStore";
+import {useAuthStore} from "../stores/userStore";
 import {onMounted} from "vue";
 import Back from "./Back.tsx";
 
-const getStore = useUserStore()
-const title = getStore.name
+const store = useAuthStore()
+const auth = store.getUserInfo
+const title = auth.username
+
 onMounted(() => {
 })
 const btnFun = () => {
-  getStore.setCount(100)
+  console.log(auth)
 }
 </script>
 

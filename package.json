@@ -14,5 +14,8 @@
 	"workspaces": [
 		"backend",
 		"frontend"
-	]
+	],
+	"dependencies": {
+		"pinia-plugin-persistedstate": "^4.2.0"
+	}
 }

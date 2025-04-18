@@ -12,8 +12,8 @@
 		btnText: String;
 	}>();
 	const emits = defineEmits<{
-		(e: btnHandle): void;
-		(e: descClick, v: Event): void;
+		(e: 'btnHandle'): void;
+		(e: 'descClick', v: Event): void;
 	}>();
 	const handle = () => emits("btnHandle");
 	const descClick = (e: Event) => emits("descClick", e);
