@@ -1,9 +1,28 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type {RouteRecordRaw} from "vue-router"
-import Login from "../SignIn/login.vue";
-import Test from "../components/Test.vue";
-import SignIn from "../SignIn/signIn.vue";
-import ForgotPass from "../SignIn/ForgotPass.vue";
+import Login from "@/SignIn/login.vue";
+import Test from "@/components/Test.vue";
+import SignIn from "@/SignIn/signIn.vue";
+import ForgotPass from "@/SignIn/ForgotPass.vue";
+import RouterTab from 'vue-router-tab'
+
+console.log(123,RouterTab)
+
+const modules = [ import.meta.glob('@/views/*/*.vue'), import.meta.glob('@/views/*/*/*.vue'), import.meta.glob('@/views/*/*/*/*.vue') ];
+
+const _modules = {
+    ...modules[ 0 ],
+    ...modules[ 1 ],
+    ...modules[ 2 ]
+};
+
+const loadView = (path: string) => () => {
+    const key = Object.keys(_modules).find(key => {
+        return key.includes(path);
+    })!;
+
+    return _modules[ key ]();
+};
 
 // 1. 配置路由
 export const routes: Array<RouteRecordRaw> = [
@@ -14,7 +33,23 @@ export const routes: Array<RouteRecordRaw> = [
     {
         path: "/home", // 默认路由 home页面
         name:'home',
-        component: Test,
+        children:[
+            {
+                path:'/home',
+                name:'Home',
+                component:Test
+            }
+        ]
+    },
+    {
+        path: "/menuOne", // 默认路由 home页面
+        children:[
+            {
+                path:'/menuOne',
+                name:'MenuOne',
+                component:loadView(`FirstMenu/MenuOne`)
+            }
+        ]
     },
     {
         path: "/login",

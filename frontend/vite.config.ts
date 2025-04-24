@@ -9,6 +9,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import {nodePolyfills} from "vite-plugin-node-polyfills";
+import {fileURLToPath, URL} from 'url';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -25,7 +26,8 @@ export default defineConfig({
 	plugins: [vue(), vueJsx(),nodePolyfills()],
 	resolve: {
 		alias: {
-			"@": "./src",
-		},
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+			style: fileURLToPath(new URL('./src/styles', import.meta.url))
+		}
 	},
 });

@@ -16,7 +16,7 @@ const btnFun = () => {
 
 <template>
   <div>
-    <Back />
+    <Back type="default" btnText="返回" />
     <h1>{{ title }}</h1>
     <NButton type="primary" @click="btnFun">测试测试</NButton>
   </div>

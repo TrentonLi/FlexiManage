@@ -12,7 +12,7 @@ export const menuList:MenuOption[] = [
         children: [
             {
                 label: '子菜单',
-                key: 'test'
+                key: 'menuOne'
             }
         ]
     }
