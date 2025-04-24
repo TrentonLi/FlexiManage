@@ -16,6 +16,7 @@
 		"frontend"
 	],
 	"dependencies": {
-		"pinia-plugin-persistedstate": "^4.2.0"
+		"pinia-plugin-persistedstate": "^4.2.0",
+		"vue3-tabs": "^0.1.13-beta.3"
 	}
 }
