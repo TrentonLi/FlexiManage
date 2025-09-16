@@ -4,9 +4,7 @@ import Login from "@/SignIn/login.vue";
 import Test from "@/components/Test.vue";
 import SignIn from "@/SignIn/signIn.vue";
 import ForgotPass from "@/SignIn/ForgotPass.vue";
-import RouterTab from 'vue-router-tab'
 
-console.log(123,RouterTab)
 
 const modules = [ import.meta.glob('@/views/*/*.vue'), import.meta.glob('@/views/*/*/*.vue'), import.meta.glob('@/views/*/*/*/*.vue') ];
 

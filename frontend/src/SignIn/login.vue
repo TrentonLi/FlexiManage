@@ -44,7 +44,7 @@ const Login = () => {
           username: 'Trenton',
           userId: '12345'
         })
-        router.push('/home')
+        router.replace('/home')
         activeRouteStore.setActiveRoute('home')
       } else {
         message.error('账号密码错误')
